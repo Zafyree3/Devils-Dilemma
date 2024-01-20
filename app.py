@@ -27,3 +27,6 @@ except FileNotFoundError:
 def index():
     return render_template('index.html')
 
+@app.route('/speechtest')
+def speechtest():
+    return render_template('speechtest.html')

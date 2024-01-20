@@ -3,3 +3,4 @@
 
 .vercel
 api/__pycache__/mainRoutes.cpython-311.pyc
+/node_modules

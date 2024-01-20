@@ -4,6 +4,7 @@
     "tailwindcss": "^3.4.1"
   },
   "dependencies": {
-    "@preline/overlay": "^2.0.2"
+    "@preline/overlay": "^2.0.2",
+    "animejs": "^3.2.2"
   }
 }

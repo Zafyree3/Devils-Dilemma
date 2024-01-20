@@ -11,36 +11,109 @@
 		></script>
 	</head>
 	<body class="bg-background flex h-full flex-col">
-		<div class="flex p-3">
+		<div id="mouse-pos" class="hidden" aria-hidden="true"></div>
+		<button
+			id="speech-button"
+			data-listening="false"
+			class="w-16 h-16 absolute p-4 rounded-full top-[90%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 border-0"
+		>
+			<img
+				class="h-full w-full"
+				src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Font_Awesome_5_solid_microphone.svg"
+			/>
+		</button>
+		<div id="top bar" class="flex p-3 mt-4 absolute z-10">
 			<span class="" onclick="openNav()"
 				><img
-					class="filter invert h-10"
+					class="h-10"
 					src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1200px-Hamburger_icon.svg.png"
 			/></span>
-			<h1 class="mx-auto text-white text-2xl font-bold mb-2">
-				Devil's Dilemma
-			</h1>
-			<!-- <button class="h-10 absolute" onclick="showNavBar()">
-				<img
-					class="filter invert h-10"
-					src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1200px-Hamburger_icon.svg.png"
-				/>
-			</button> -->
 		</div>
+		<main class="flex-grow overflow-hidden relative">
+			<div class="w-full flex justify-center items-center">
+				<div
+					id="new-question-card"
+					data-translatey="-13"
+					class="card bg-black w-11/12 aspect-[3/4] p-5 absolute"
+				>
+					<p
+						id="new-question-text"
+						class="text-white text-lg font-bold mx-auto"
+					></p>
+				</div>
+			</div>
+			<div class="h-full w-full mt-8">
+				<div
+					id="cards-container"
+					class="flex w-full h-full justify-center items-center relative"
+				>
+					<div
+						id="question-card"
+						class="card bg-black w-11/12 aspect-[3/4] p-5 absolute"
+					>
+						<p id="question-text" class="text-white text-lg font-bold mx-auto">
+							Hello! Should I start dieting?
+						</p>
+					</div>
+					<div
+						id="devil-card"
+						data-showing="false"
+						data-translatex="21.5"
+						data-translatey="-0.5"
+						data-rotate="-5"
+						class="card bg-devil absolute flex flex-row gap-5"
+					>
+						<div id="devil-card-edge" class="h-full">
+							<p class="text-white text-2xl font-bold mx-auto card-side">
+								DEVIL
+							</p>
+						</div>
+						<p
+							id="devil-text"
+							class="card-content text-white text-lg font-bold mx-auto"
+						>
+							Hello! Should I start dieting?
+						</p>
+					</div>
+					<div
+						id="angel-card"
+						data-showing="false"
+						data-translatex="-21.5"
+						data-translatey="-0.5"
+						data-rotate="5"
+						class="card bg-angel absolute flex flex-row-reverse gap-5"
+					>
+						<div id="angel-card-edge" class="h-full">
+							<p class="text-white text-2xl font-bold mx-auto card-side">
+								ANGEL
+							</p>
+						</div>
+						<p
+							id="angel-text"
+							class="card-content text-white text-lg font-bold mx-auto"
+						>
+							Hello! Should I start dieting?
+						</p>
+					</div>
+				</div>
+			</div>
+		</main>
 
-		<hr class="border border-white" />
+		<side-bar class="z-20"></side-bar>
 
-		<div id="mySidenav" class="sidenav">
-			<a href="javascript:void(0)" onclick="closeNav()"
-				><img
-					class="filter invert h-10"
-					src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/OOjs_UI_icon_close.svg/2048px-OOjs_UI_icon_close.svg.png"
-			/></a>
-			<a href="#" class="w-full block">About</a>
-			<a href="#" class="w-full block">Clients</a>
-			<a href="#" class="w-full block">Services</a>
-			<a href="#" class="w-full block">Contact</a>
-		</div>
+		<script src="../static/queryCmds.js"></script>
+		<script src="../static/getCurrentURL.js"></script>
+
 		<script src="../static/handleNavBar.js"></script>
+		<script src="../static/handleCardAnimation.js"></script>
+		<script src="../static/handleCardSwipe.js"></script>
+		<script src="../static/handleNewCard.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+		<script src="../static/fetchUUID.js"></script>
+		<script src="../static/fetchQuestions.js"></script>
+		<script src="../static/fetchNewQuestion.js"></script>
+		<script src="../static/loadNavBar.js"></script>
+		<script src="../static/handleSpeech.js"></script>
+		<script src="../static/misc.js"></script>
 	</body>
 </html>

@@ -4,11 +4,9 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
-				text: "#ffffff",
-				background: "#2E2836",
-				angel: "#77A3CF",
-				devil: "E06767",
-				human: "C9E949",
+				background: "#FFD7D7",
+				angel: "#9FC5FF",
+				devil: "#FF8A8A",
 			},
 		},
 	},

@@ -4,37 +4,48 @@
 
 html {
 	height: 100vh;
+	overscroll-behavior: none;
+	overflow: hidden;
 }
 
 .sidenav {
 	height: 100%; /* 100% Full-height */
-	width: 0; /* 0 width - change this with JavaScript */
+	width: 18rem;
 	position: fixed; /* Stay in place */
-	z-index: 1; /* Stay on top */
+	z-index: 20; /* Stay on top */
 	top: 0; /* Stay at the top */
 	left: 0;
 	background-color: #111; /* Black*/
 	overflow-x: hidden; /* Disable horizontal scroll */
-	padding-top: 60px; /* Place content 60px from the top */
+	/* padding-top: 60px; Place content 60px from the top */
+	transform: translateX(-100%);
 	transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 }
 
-.sidenav {
-	height: 100%; /* 100% Full-height */
-	width: 0; /* 0 width - change this with JavaScript */
-	position: fixed; /* Stay in place */
-	z-index: 1; /* Stay on top */
-	top: 0; /* Stay at the top */
-	left: 0;
-	background-color: #111; /* Black*/
-	overflow-x: hidden; /* Disable horizontal scroll */
-	padding-top: 60px; /* Place content 60px from the top */
-	transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
-}
-
-.sidenav a:hover {
+.sidenav button:hover {
 	color: #f1f1f1;
 }
+
+.sidenav ul {
+	margin-top: 1rem;
+}
+
+.sidenav ul button {
+	text-align: left;
+	width: 100%;
+	text-overflow: ellipsis;
+}
+
+.sidenav ul li {
+	padding-block: 0.5rem;
+	padding-inline: 1rem;
+	border-radius: 0.5rem;
+}
+
+.sidenav ul li:has(button.active) {
+	background-color: rgb(255, 255, 255, 0.2);
+}
+
 .sidenav .closebtn {
 	position: absolute;
 	top: 0;
@@ -43,11 +54,44 @@ html {
 	margin-left: 50px;
 }
 
-/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-#main {
-	transition: margin-left 0.5s;
-	padding: 20px;
+.sidenav img {
+	filter: invert(100%);
 }
+
+.card-side {
+	height: 100%;
+	writing-mode: vertical-lr;
+	text-orientation: upright;
+}
+.card {
+	width: 85%;
+	aspect-ratio: 3/4;
+	padding: 2.75rem;
+	overflow: hidden;
+	pointer-events: none;
+	border-radius: 1rem;
+}
+
+main {
+	overflow-y: visible;
+}
+
+#devil-card,
+#angel-card {
+	padding: 1.05rem;
+}
+
+.card:not(#question-card) > .card-content {
+	padding-block: calc(2.75rem - 1.05rem);
+}
+
+.btn:active:hover,
+.btn:active:focus {
+	animation: none;
+	transform: translateY(-50%) translateX(-50%);
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
@@ -56,5 +100,11 @@ html {
 	}
 	.sidenav a {
 		font-size: 18px;
+	}
+}
+
+@keyframes returnToCenter {
+	100% {
+		transform: translateX(0%);
 	}
 }

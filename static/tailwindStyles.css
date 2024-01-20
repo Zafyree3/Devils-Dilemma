@@ -746,6 +746,57 @@ html {
   justify-content: center;
 }
 
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--rounded-box, 1rem);
+}
+
+.card:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.card figure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card.image-full {
+  display: grid;
+}
+
+.card.image-full:before {
+  position: relative;
+  content: "";
+  z-index: 10;
+  border-radius: var(--rounded-box, 1rem);
+  --tw-bg-opacity: 1;
+  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+  opacity: 0.75;
+}
+
+.card.image-full:before,
+    .card.image-full > * {
+  grid-column-start: 1;
+  grid-row-start: 1;
+}
+
+.card.image-full > figure img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.card.image-full > .card-body {
+  position: relative;
+  z-index: 20;
+  --tw-text-opacity: 1;
+  color: var(--fallback-nc,oklch(var(--nc)/var(--tw-text-opacity)));
+}
+
 .link {
   cursor: pointer;
   text-decoration-line: underline;
@@ -780,6 +831,44 @@ html {
   100% {
     transform: scale(1);
   }
+}
+
+.card :where(figure:first-child) {
+  overflow: hidden;
+  border-start-start-radius: inherit;
+  border-start-end-radius: inherit;
+  border-end-start-radius: unset;
+  border-end-end-radius: unset;
+}
+
+.card :where(figure:last-child) {
+  overflow: hidden;
+  border-start-start-radius: unset;
+  border-start-end-radius: unset;
+  border-end-start-radius: inherit;
+  border-end-end-radius: inherit;
+}
+
+.card:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.card.bordered {
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-border-opacity)));
+}
+
+.card.compact .card-body {
+  padding: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.card.image-full :where(figure) {
+  overflow: hidden;
+  border-radius: inherit;
 }
 
 @keyframes checkmark {
@@ -903,8 +992,64 @@ html {
   }
 }
 
+.card-side {
+  align-items: stretch;
+  flex-direction: row;
+}
+
+.card-side :where(figure:first-child) {
+  overflow: hidden;
+  border-start-start-radius: inherit;
+  border-start-end-radius: unset;
+  border-end-start-radius: inherit;
+  border-end-end-radius: unset;
+}
+
+.card-side :where(figure:last-child) {
+  overflow: hidden;
+  border-start-start-radius: unset;
+  border-start-end-radius: inherit;
+  border-end-start-radius: unset;
+  border-end-end-radius: inherit;
+}
+
+.card-side figure > * {
+  max-width: unset;
+}
+
+:where(.card-side figure > *) {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .absolute {
   position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.left-1\/2 {
+  left: 50%;
+}
+
+.top-\[90\%\] {
+  top: 90%;
+}
+
+.z-10 {
+  z-index: 10;
+}
+
+.z-20 {
+  z-index: 20;
+}
+
+.z-40 {
+  z-index: 40;
 }
 
 .mx-auto {
@@ -912,55 +1057,140 @@ html {
   margin-right: auto;
 }
 
-.mb-2 {
-  margin-bottom: 0.5rem;
+.mt-4 {
+  margin-top: 1rem;
 }
 
-.block {
-  display: block;
+.mt-8 {
+  margin-top: 2rem;
 }
 
 .flex {
   display: flex;
 }
 
+.hidden {
+  display: none;
+}
+
+.aspect-\[3\/4\] {
+  aspect-ratio: 3/4;
+}
+
 .h-10 {
   height: 2.5rem;
+}
+
+.h-16 {
+  height: 4rem;
 }
 
 .h-full {
   height: 100%;
 }
 
+.w-11\/12 {
+  width: 91.666667%;
+}
+
+.w-16 {
+  width: 4rem;
+}
+
 .w-full {
   width: 100%;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.-translate-x-1\/2 {
+  --tw-translate-x: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.-translate-y-1\/2 {
+  --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-row-reverse {
+  flex-direction: row-reverse;
 }
 
 .flex-col {
   flex-direction: column;
 }
 
-.border {
-  border-width: 1px;
+.items-center {
+  align-items: center;
 }
 
-.border-white {
-  --tw-border-opacity: 1;
-  border-color: rgb(255 255 255 / var(--tw-border-opacity));
+.justify-center {
+  justify-content: center;
+}
+
+.gap-5 {
+  gap: 1.25rem;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.border-0 {
+  border-width: 0px;
+}
+
+.bg-angel {
+  --tw-bg-opacity: 1;
+  background-color: rgb(159 197 255 / var(--tw-bg-opacity));
 }
 
 .bg-background {
   --tw-bg-opacity: 1;
-  background-color: rgb(46 40 54 / var(--tw-bg-opacity));
+  background-color: rgb(255 215 215 / var(--tw-bg-opacity));
+}
+
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
+.bg-devil {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 138 138 / var(--tw-bg-opacity));
 }
 
 .p-3 {
   padding: 0.75rem;
 }
 
+.p-4 {
+  padding: 1rem;
+}
+
+.p-5 {
+  padding: 1.25rem;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
 .font-bold {
@@ -972,36 +1202,19 @@ html {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.invert {
-  --tw-invert: invert(100%);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-
-.filter {
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-
 html {
   height: 100vh;
+  overscroll-behavior: none;
+  overflow: hidden;
 }
 
 .sidenav {
-  /* 100% Full-height */
-  /* 0 width - change this with JavaScript */
-  /* Stay in place */
-  /* Stay on top */
-  /* Stay at the top */
-  /* Black*/
-  /* Disable horizontal scroll */
-  /* Place content 60px from the top */
-  /* 0.5 second transition effect to slide in the sidenav */
   height: 100%;
   /* 100% Full-height */
-  width: 0;
-  /* 0 width - change this with JavaScript */
+  width: 18rem;
   position: fixed;
   /* Stay in place */
-  z-index: 1;
+  z-index: 20;
   /* Stay on top */
   top: 0;
   /* Stay at the top */
@@ -1010,14 +1223,34 @@ html {
   /* Black*/
   overflow-x: hidden;
   /* Disable horizontal scroll */
-  padding-top: 60px;
-  /* Place content 60px from the top */
+  /* padding-top: 60px; Place content 60px from the top */
+  transform: translateX(-100%);
   transition: 0.5s;
   /* 0.5 second transition effect to slide in the sidenav */
 }
 
-.sidenav a:hover {
+.sidenav button:hover {
   color: #f1f1f1;
+}
+
+.sidenav ul {
+  margin-top: 1rem;
+}
+
+.sidenav ul button {
+  text-align: left;
+  width: 100%;
+  text-overflow: ellipsis;
+}
+
+.sidenav ul li {
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+  border-radius: 0.5rem;
+}
+
+.sidenav ul li:has(button.active) {
+  background-color: rgb(255, 255, 255, 0.2);
 }
 
 .sidenav .closebtn {
@@ -1028,12 +1261,45 @@ html {
   margin-left: 50px;
 }
 
-/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-
-#main {
-  transition: margin-left 0.5s;
-  padding: 20px;
+.sidenav img {
+  filter: invert(100%);
 }
+
+.card-side {
+  height: 100%;
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+}
+
+.card {
+  width: 85%;
+  aspect-ratio: 3/4;
+  padding: 2.75rem;
+  overflow: hidden;
+  pointer-events: none;
+  border-radius: 1rem;
+}
+
+main {
+  overflow-y: visible;
+}
+
+#devil-card,
+#angel-card {
+  padding: 1.05rem;
+}
+
+.card:not(#question-card) > .card-content {
+  padding-block: calc(2.75rem - 1.05rem);
+}
+
+.btn:active:hover,
+.btn:active:focus {
+  animation: none;
+  transform: translateY(-50%) translateX(-50%);
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 
@@ -1044,5 +1310,11 @@ html {
 
   .sidenav a {
     font-size: 18px;
+  }
+}
+
+@keyframes returnToCenter {
+  100% {
+    transform: translateX(0%);
   }
 }

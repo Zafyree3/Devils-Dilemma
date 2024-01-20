@@ -2,7 +2,15 @@
 module.exports = {
 	content: ["./templates/*"],
 	theme: {
-		extend: {},
+		extend: {
+			colors: {
+				text: "#ffffff",
+				background: "#2E2836",
+				angel: "#77A3CF",
+				devil: "E06767",
+				human: "C9E949",
+			},
+		},
 	},
 	plugins: [],
 };

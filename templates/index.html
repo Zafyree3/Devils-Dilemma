@@ -4,9 +4,43 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link href="../static/tailwindStyles.css" rel="stylesheet" />
+		<script
+			src="../static/components/sideBar.js"
+			type="text/javascript"
+			defer
+		></script>
 	</head>
-	<body class="bg-background flex h-full flex-col p-3">
-		<h1 class="mx-auto text-white text-2xl font-bold mb-3">Devil's Dilemma</h1>
+	<body class="bg-background flex h-full flex-col">
+		<div class="flex p-3">
+			<span class="" onclick="openNav()"
+				><img
+					class="filter invert h-10"
+					src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1200px-Hamburger_icon.svg.png"
+			/></span>
+			<h1 class="mx-auto text-white text-2xl font-bold mb-2">
+				Devil's Dilemma
+			</h1>
+			<!-- <button class="h-10 absolute" onclick="showNavBar()">
+				<img
+					class="filter invert h-10"
+					src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1200px-Hamburger_icon.svg.png"
+				/>
+			</button> -->
+		</div>
+
 		<hr class="border border-white" />
+
+		<div id="mySidenav" class="sidenav">
+			<a href="javascript:void(0)" onclick="closeNav()"
+				><img
+					class="filter invert h-10"
+					src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/OOjs_UI_icon_close.svg/2048px-OOjs_UI_icon_close.svg.png"
+			/></a>
+			<a href="#" class="w-full block">About</a>
+			<a href="#" class="w-full block">Clients</a>
+			<a href="#" class="w-full block">Services</a>
+			<a href="#" class="w-full block">Contact</a>
+		</div>
+		<script src="../static/handleNavBar.js"></script>
 	</body>
 </html>

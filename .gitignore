@@ -1,0 +1,5 @@
+/.venv
+/__pycache__
+
+.vercel
+api/__pycache__/mainRoutes.cpython-311.pyc

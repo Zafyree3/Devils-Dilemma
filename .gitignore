@@ -5,3 +5,4 @@
 api/__pycache__/mainRoutes.cpython-311.pyc
 /node_modules
 /api/__pycache__
+.env

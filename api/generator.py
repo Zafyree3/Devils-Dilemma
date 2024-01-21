@@ -6,15 +6,16 @@ from os import environ
 import sqlite3
 import uuid
 import json
+from dotenv import load_dotenv
 
 bp = Blueprint('generator', __name__, url_prefix='/llm')
 
-from config import OPENAI_API_KEY, ANGEL_ASST_ID, DEVIL_ASST_ID
+load_dotenv()
 
-client = openai.Client(api_key=OPENAI_API_KEY)
+client = openai.Client(api_key=environ.get('OPENAI_API_KEY'))
 
-angel_asst = client.beta.assistants.retrieve(ANGEL_ASST_ID)
-devil_asst = client.beta.assistants.retrieve(DEVIL_ASST_ID)
+angel_asst = client.beta.assistants.retrieve(environ.get('ANGEL_ASST_ID'))
+devil_asst = client.beta.assistants.retrieve(environ.get('DEVIL_ASST_ID'))
 
 @bp.route('/')
 def index():

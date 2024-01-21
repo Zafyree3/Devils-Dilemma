@@ -10,7 +10,7 @@
 			defer
 		></script>
 	</head>
-	<body class="bg-background flex h-full flex-col">
+	<body class="bg-white flex h-full flex-col">
 		<div id="mouse-pos" class="hidden" aria-hidden="true"></div>
 		<button
 			id="speech-button"
@@ -51,6 +51,12 @@
 						id="question-card"
 						class="card bg-black w-11/12 aspect-[3/4] p-5 absolute"
 					>
+						<div
+							id="question-loading"
+							class="h-full w-full absolute bg-slate-50/65 top-0 left-0 z-10 items-center justify-center hidden"
+						>
+							<p class="text-white text-2xl font-bold mx-auto">LOADING</p>
+						</div>
 						<p id="question-text" class="text-white text-lg font-bold mx-auto">
 							Hello! Should I start dieting?
 						</p>
@@ -114,6 +120,7 @@
 		<script src="../static/fetchNewQuestion.js"></script>
 		<script src="../static/loadNavBar.js"></script>
 		<script src="../static/handleSpeech.js"></script>
+		<script src="../static/loadSpeechData.js"></script>
 		<script src="../static/misc.js"></script>
 	</body>
 </html>

@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	recognition.addEventListener("end", () => {
 		speechButton.dataset.listening = "false";
 		speechButton.style.backgroundColor = "red";
-		peekCard();
+		loadSpeechData();
 	});
 
 	function startRecording() {
@@ -50,3 +50,57 @@ document.addEventListener("DOMContentLoaded", () => {
 		};
 	}
 });
+
+function loadSpeechData() {
+	const questionText = document.getElementById("question-text");
+	const question = questionText.innerText;
+	const questionLoading = document.getElementById("question-loading");
+
+	questionLoading.style.display = "flex";
+
+	const angelCallback = (request, data) => {
+		console.log(data);
+		const angelText = document.getElementById("angel-text");
+		angelText.innerText = data["answer"];
+
+		const devilCallback = (request, data) => {
+			console.log(data);
+			const devilText = document.getElementById("devil-text");
+			devilText.innerText = data["answer"];
+
+			const questionText = document.getElementById("question-text");
+
+			questionLoading.style.display = "none";
+
+			peekCard();
+
+			saveData();
+		};
+
+		fetchMethod(currentUrl + "/api/llm/devil/question", devilCallback, "POST", {
+			question: question,
+		});
+	};
+
+	fetchMethod(currentUrl + "/api/llm/angel/question", angelCallback, "POST", {
+		question: question,
+	});
+}
+
+function saveData() {
+	const questionText = document.getElementById("question-text");
+	const angelText = document.getElementById("angel-text");
+	const devilText = document.getElementById("devil-text");
+
+	const callback = (request, data) => {
+		console.log(data);
+		localStorage.setItem("current-uuid", data["uuid"]);
+		updateNavBar();
+	};
+
+	fetchMethod(currentUrl + "/api/db/question", callback, "POST", {
+		question: questionText.innerText,
+		angelans: angelText.innerText,
+		devilans: devilText.innerText,
+	});
+}

@@ -79,6 +79,44 @@ main {
 #devil-card,
 #angel-card {
 	padding: 1.05rem;
+	z-index: 14;
+}
+
+#devil-card::before {
+	content: " ";
+	display: block;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 33%;
+	height: 33%;
+	opacity: 0.3;
+	z-index: 1;
+	background-image: url("../static/images/DDAssets.png");
+	background-size: cover;
+}
+
+#devil-card * {
+	z-index: 2;
+}
+
+#angel-card::before {
+	content: " ";
+	display: block;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 33%;
+	height: 33%;
+	opacity: 0.3;
+	filter: brightness(0.8);
+	z-index: 1;
+	background-image: url("../static/images/DDAssets_-_Copy.png");
+	background-size: cover;
+}
+
+#angel-card * {
+	z-index: 2;
 }
 
 .card:not(#question-card) > .card-content {

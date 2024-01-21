@@ -66,14 +66,17 @@ function clickNavButton(uuid) {
 
 				anime({
 					targets: newCard,
-					translateY: [-13, -12],
+					translateY: [
+						parseInt(newCard.dataset.translatey) - 1,
+						parseInt(newCard.dataset.translatey),
+					],
 					duration: 1000,
 				});
 
 				setTimeout(() => {
 					peekCard();
 
-					localStorage.setItem("current-uuid", newCardText.dataset.uuid);
+					localStorage.setItem("current-uuid", uuid);
 
 					loadQuestion();
 					loadNewQuestion();

@@ -18,6 +18,7 @@ def write():
     if data is None:
         return Response(status=400)
     newuuid = uuid.uuid4()
+    newuuid = str(newuuid)
     question  = data['question']
     devilans = data['devilans']
     angelans = data['angelans']
@@ -28,8 +29,7 @@ def write():
     conn.commit()
     conn.close()
     
-    return Response(status=200)
-
+    return {'uuid': newuuid}
 @bp.get('/question')
 def read():
     conn = sqlite3.connect(dburl)

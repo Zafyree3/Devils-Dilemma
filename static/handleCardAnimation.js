@@ -60,6 +60,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		if (card.id === "angel-card" || card.id === "devil-card") {
 			card.addEventListener("click", () => {
+				if (card.classList.contains("animating")) {
+					return;
+				}
 				card.dataset.showing =
 					card.dataset.showing === "true" ? "false" : "true";
 
@@ -82,22 +85,25 @@ document.addEventListener("DOMContentLoaded", () => {
 								translateX: generateRandomNumber(-1, 1),
 								translateY: generateRandomNumber(-1, 1),
 								rotate: generateRandomNumber(-1, 1),
-								duration: 1000,
+								duration: 850,
 								easing: "easeOutElastic(1, .6)",
 								begin: () => {
 									console.log("show begin");
+									card.classList.add("animating");
 									card.removeEventListener("click", () => {});
 									observer.disconnect();
 								},
 								complete: () => {
 									console.log("show end");
 									//card.style.filter = "brightness(0.5)";
+									card.classList.remove("animating");
 									setTimeout(() => {
 										//card.style.filter = "none";
+
 										observer.observe(card, { attributes: true });
 										console.log("observer reconnected");
 										card.addEventListener("click", () => {});
-									}, 1000);
+									}, 850);
 								},
 							});
 						} else if (card.dataset.showing === "false") {
@@ -106,20 +112,22 @@ document.addEventListener("DOMContentLoaded", () => {
 								translateX: card.dataset["translatex"],
 								translateY: card.dataset["translatey"],
 								rotate: card.dataset["rotate"],
-								duration: 1000,
+								duration: 850,
 								begin: () => {
 									card.removeEventListener("click", () => {});
 									observer.disconnect();
+									card.classList.add("animating");
 								},
 								complete: () => {
 									console.log("show end");
 									//card.style.filter = "brightness(0.5)";
+									card.classList.remove("animating");
 									setTimeout(() => {
 										//card.style.filter = "none";
 										observer.observe(card, { attributes: true });
 										card.addEventListener("click", () => {});
 										console.log("observer reconnected");
-									}, 1000);
+									}, 850);
 								},
 							});
 						} else {
@@ -128,18 +136,23 @@ document.addEventListener("DOMContentLoaded", () => {
 								translateX: parseInt(card.dataset["translatex"]) * 1.2,
 								translateY: card.dataset["translatey"],
 								rotate: card.dataset["rotate"],
-								duration: 1000,
+								duration: 850,
 								begin: () => {
 									observer.disconnect();
+									card.removeEventListener("click", () => {});
+									card.classList.add("animating");
 								},
 								complete: () => {
 									console.log("show end");
 									//card.style.filter = "brightness(0.5)";
+									card.classList.remove("animating");
 									setTimeout(() => {
 										//card.style.filter = "none";
 										observer.observe(card, { attributes: true });
 										console.log("observer reconnected");
-									}, 1000);
+
+										card.addEventListener("click", () => {});
+									}, 850);
 								},
 							});
 						}

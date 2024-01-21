@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 
 bp = Blueprint('generator', __name__, url_prefix='/llm')
 
-load_dotenv()
+load_dotenv("/etc/secrets/.env")
 
 client = openai.Client(api_key=environ.get('OPENAI_API_KEY'))
 

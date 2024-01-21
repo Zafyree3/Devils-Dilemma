@@ -12,7 +12,7 @@ html {
 	height: 100%; /* 100% Full-height */
 	width: 18rem;
 	position: fixed; /* Stay in place */
-	z-index: 20; /* Stay on top */
+	z-index: 999; /* Stay on top */
 	top: 0; /* Stay at the top */
 	left: 0;
 	background-color: #111; /* Black*/
@@ -79,7 +79,6 @@ main {
 #devil-card,
 #angel-card {
 	padding: 1.05rem;
-	z-index: 14;
 }
 
 #devil-card::before {

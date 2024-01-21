@@ -9,32 +9,24 @@
 			type="text/javascript"
 			defer
 		></script>
+		<link rel="manifest" href="../static/manifest.json" />
 	</head>
 	<body class="bg-white flex h-full flex-col">
 		<div id="mouse-pos" class="hidden" aria-hidden="true"></div>
-		<button
-			id="speech-button"
-			data-listening="false"
-			class="w-16 h-16 absolute p-4 rounded-full top-[90%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 border-0"
-		>
-			<img
-				class="h-full w-full"
-				src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Font_Awesome_5_solid_microphone.svg"
-			/>
-		</button>
-		<div id="top bar" class="flex p-3 mt-4 absolute z-10">
-			<span class="" onclick="openNav()"
-				><img
-					class="h-10"
-					src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1200px-Hamburger_icon.svg.png"
-			/></span>
-		</div>
-		<main class="flex-grow overflow-hidden relative">
+
+		<main class="flex-grow overflow-hidden relative flex flex-col">
+			<div id="top bar" class="flex p-3 mt-4 z-30">
+				<span class="bg-white" onclick="openNav()"
+					><img
+						class="h-10 bg-white z-40 absolute rounded-md"
+						src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1200px-Hamburger_icon.svg.png"
+				/></span>
+			</div>
 			<div class="w-full flex justify-center items-center">
 				<div
 					id="new-question-card"
 					data-translatey="-13"
-					class="card bg-black w-11/12 aspect-[3/4] p-5 absolute"
+					class="card bg-black w-11/12 aspect-[3/4] p-5 absolute z-20"
 				>
 					<p
 						id="new-question-text"
@@ -42,7 +34,7 @@
 					></p>
 				</div>
 			</div>
-			<div class="h-full w-full mt-8">
+			<div class="h-full w-full mt-4">
 				<div
 					id="cards-container"
 					class="flex w-full h-full justify-center items-center relative"
@@ -53,7 +45,7 @@
 					>
 						<div
 							id="question-loading"
-							class="h-full w-full absolute bg-slate-50/65 top-0 left-0 z-10 items-center justify-center hidden"
+							class="h-full w-full absolute bg-slate-50/65 top-0 left-0 z-20 items-center justify-center hidden"
 						>
 							<p class="text-white text-2xl font-bold mx-auto">LOADING</p>
 						</div>
@@ -65,9 +57,9 @@
 						id="devil-card"
 						data-showing="false"
 						data-translatex="21.5"
-						data-translatey="-0.5"
+						data-translatey="-0"
 						data-rotate="-5"
-						class="card bg-devil absolute flex flex-row gap-5"
+						class="card bg-devil absolute flex flex-row gap-5 z-30"
 					>
 						<div id="devil-card-edge" class="h-full">
 							<p class="text-white text-2xl font-bold mx-auto card-side">
@@ -85,9 +77,9 @@
 						id="angel-card"
 						data-showing="false"
 						data-translatex="-21.5"
-						data-translatey="-0.5"
+						data-translatey="-0"
 						data-rotate="5"
-						class="card bg-angel absolute flex flex-row-reverse gap-5"
+						class="card bg-angel absolute flex flex-row-reverse gap-5 z-30"
 					>
 						<div id="angel-card-edge" class="h-full">
 							<p class="text-white text-2xl font-bold mx-auto card-side">
@@ -103,9 +95,19 @@
 					</div>
 				</div>
 			</div>
+			<button
+				id="speech-button"
+				data-listening="false"
+				class="w-16 h-16 p-4 rounded-full mx-auto z-40 border-0 mb-5"
+			>
+				<img
+					class="h-full w-full"
+					src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Font_Awesome_5_solid_microphone.svg"
+				/>
+			</button>
 		</main>
 
-		<side-bar class="z-20"></side-bar>
+		<side-bar></side-bar>
 
 		<script src="../static/queryCmds.js"></script>
 		<script src="../static/getCurrentURL.js"></script>

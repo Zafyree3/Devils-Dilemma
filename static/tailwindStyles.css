@@ -1056,6 +1056,10 @@ html {
   z-index: 20;
 }
 
+.z-30 {
+  z-index: 30;
+}
+
 .z-40 {
   z-index: 40;
 }
@@ -1071,6 +1075,10 @@ html {
 
 .mt-8 {
   margin-top: 2rem;
+}
+
+.mb-5 {
+  margin-bottom: 1.25rem;
 }
 
 .flex {
@@ -1155,6 +1163,10 @@ html {
   border-radius: 9999px;
 }
 
+.rounded-md {
+  border-radius: 0.375rem;
+}
+
 .border-0 {
   border-width: 0px;
 }
@@ -1226,7 +1238,7 @@ html {
   width: 18rem;
   position: fixed;
   /* Stay in place */
-  z-index: 20;
+  z-index: 999;
   /* Stay on top */
   top: 0;
   /* Stay at the top */
@@ -1299,7 +1311,6 @@ main {
 #devil-card,
 #angel-card {
   padding: 1.05rem;
-  z-index: 14;
 }
 
 #devil-card::before {

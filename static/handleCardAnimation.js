@@ -12,19 +12,41 @@ document.addEventListener("DOMContentLoaded", () => {
 		"#angel-card, #devil-card, #new-question-card"
 	);
 
+	const questionCard = document.getElementById("question-card");
+
 	cards.forEach((card) => {
 		if (card.id === "devil-card") {
-			const tx = card.dataset.translatex;
-			const ty = card.dataset.translatey;
 			const rot = card.dataset.rotate;
-			card.style.transform = `translateX(${tx}rem) translateY(${ty}rem) rotate(${rot}deg)`;
+
+			const x = screen.width;
+			const tx = (x * 0.8) / 16;
+
+			card.dataset.translatex = tx;
+
+			let h =
+				card.getBoundingClientRect().width * Math.sin(rot * (Math.PI / 180));
+			h = Math.abs(h / 32);
+
+			card.dataset.translatey = -h;
+
+			card.style.transform = `translateX(${tx}rem) translateY(${-h}rem) rotate(${rot}deg)`;
 		}
 
 		if (card.id === "angel-card") {
-			const tx = card.dataset.translatex;
-			const ty = card.dataset.translatey;
 			const rot = card.dataset.rotate;
-			card.style.transform = `translateX(${tx}rem) translateY(${ty}rem) rotate(${rot}deg)`;
+
+			const x = screen.width;
+			const tx = (x * -0.8) / 16;
+
+			card.dataset.translatex = tx;
+
+			let h =
+				card.getBoundingClientRect().width * Math.sin(rot * (Math.PI / 180));
+			h = Math.abs(h / 32);
+
+			card.dataset.translatey = -h;
+
+			card.style.transform = `translateX(${tx}rem) translateY(${-h}rem) rotate(${rot}deg)`;
 		}
 
 		if (card.id === "new-question-card") {
@@ -112,9 +134,9 @@ document.addEventListener("DOMContentLoaded", () => {
 								},
 								complete: () => {
 									console.log("show end");
-									card.style.filter = "brightness(0.5)";
+									//card.style.filter = "brightness(0.5)";
 									setTimeout(() => {
-										card.style.filter = "none";
+										//card.style.filter = "none";
 										observer.observe(card, { attributes: true });
 										console.log("observer reconnected");
 									}, 1000);

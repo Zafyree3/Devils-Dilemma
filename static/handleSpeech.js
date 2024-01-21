@@ -57,30 +57,43 @@ function loadSpeechData() {
 	const questionLoading = document.getElementById("question-loading");
 
 	questionLoading.style.display = "flex";
+	const angelText = document.getElementById("angel-text");
+	const devilText = document.getElementById("devil-text");
+
+	angelText.innerText = "";
+	devilText.innerText = "";
 
 	const angelCallback = (request, data) => {
 		console.log(data);
-		const angelText = document.getElementById("angel-text");
+
 		angelText.innerText = data["answer"];
 
-		const devilCallback = (request, data) => {
-			console.log(data);
-			const devilText = document.getElementById("devil-text");
-			devilText.innerText = data["answer"];
-
-			const questionText = document.getElementById("question-text");
-
+		if (angelText.innerText !== "" && devilText.innerText !== "") {
 			questionLoading.style.display = "none";
 
 			peekCard();
 
 			saveData();
-		};
-
-		fetchMethod(currentUrl + "/api/llm/devil/question", devilCallback, "POST", {
-			question: question,
-		});
+		}
 	};
+
+	const devilCallback = (request, data) => {
+		console.log(data);
+
+		devilText.innerText = data["answer"];
+
+		if (angelText.innerText !== "" && devilText.innerText !== "") {
+			questionLoading.style.display = "none";
+
+			peekCard();
+
+			saveData();
+		}
+	};
+
+	fetchMethod(currentUrl + "/api/llm/devil/question", devilCallback, "POST", {
+		question: question,
+	});
 
 	fetchMethod(currentUrl + "/api/llm/angel/question", angelCallback, "POST", {
 		question: question,

@@ -2,17 +2,18 @@ from openai import OpenAI
 import openai
 import time
 from flask import Blueprint, request, Response
-import os
+from os import environ
 import sqlite3
 import uuid
 import json
 
 bp = Blueprint('generator', __name__, url_prefix='/llm')
 
-client = openai.Client(api_key="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")
 
-angel_asst = client.beta.assistants.retrieve("asst_VsmDUilhSFZC9o6RNqQaXF4M")
-devil_asst = client.beta.assistants.retrieve("asst_TjH1TFRYkfdzpneJLc3JL70o")
+client = openai.Client(api_key=environ.get('OPENAI_API_KEY'))
+
+angel_asst = client.beta.assistants.retrieve(environ.get('ANGEL_ASST_ID'))
+devil_asst = client.beta.assistants.retrieve(environ.get('DEVIL_ASST_ID'))
 
 @bp.route('/')
 def index():

@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	window.addEventListener("touchend", (e) => {
 		let deltaX;
+		let deltaY;
 
 		deltaX = e.changedTouches[0].clientX - mouseData.dataset.x;
 		deltaY = e.changedTouches[0].clientY - mouseData.dataset.y;
@@ -36,6 +37,4 @@ document.addEventListener("DOMContentLoaded", () => {
 			newCard.click();
 		}
 	});
-
-	window;
 });

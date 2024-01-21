@@ -66,7 +66,7 @@ function loadSpeechData() {
 	const angelCallback = (request, data) => {
 		console.log(data);
 
-		angelText.innerText = data["answer"];
+		angelText.innerText = data["answer"].replace('"', "");
 
 		if (angelText.innerText !== "" && devilText.innerText !== "") {
 			questionLoading.style.display = "none";
@@ -80,7 +80,7 @@ function loadSpeechData() {
 	const devilCallback = (request, data) => {
 		console.log(data);
 
-		devilText.innerText = data["answer"];
+		devilText.innerText = data["answer"].replace('"', "");
 
 		if (angelText.innerText !== "" && devilText.innerText !== "") {
 			questionLoading.style.display = "none";
